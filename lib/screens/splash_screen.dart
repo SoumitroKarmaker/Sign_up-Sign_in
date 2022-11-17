@@ -1,4 +1,4 @@
-import 'package:api/screens/home.dart';
+import 'package:api/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,9 +16,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   gotoHomeScreen() async {
-    await Future.delayed(Duration(seconds: 10));
+    await Future.delayed(Duration(seconds: 2));
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Home()));
+        context, MaterialPageRoute(builder: (context) => SignUp()));
   }
 
   @override

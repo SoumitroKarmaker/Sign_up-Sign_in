@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+import '../sign_in.dart';
+
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _HomeState extends State<Home> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
-
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Sign up', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
+                Text('Sign Up', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
                 SizedBox(height: 20,),
                 AppTextField(
                     textFieldType: TextFieldType.NAME,
@@ -61,18 +63,21 @@ class _HomeState extends State<Home> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text('Sign up', style: TextStyle(fontSize: 17),),
+                          child: Text('Sign Up', style: TextStyle(fontSize: 17),),
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(height: 20,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Allready Sign up ? ',style: TextStyle(color: Colors.grey, fontSize: 15),),
-                    Text('Sign in',style: TextStyle(color: Colors.blue,fontSize: 15,fontWeight: FontWeight.bold),),
+                    SizedBox(width: 10,),
+                    Text('Sign In',
+                      style: TextStyle(color: Colors.blue,fontSize: 15,fontWeight: FontWeight.bold),
+                    ).onTap(() => SignIn().launch(context)),
                   ],
                 ),
               ],

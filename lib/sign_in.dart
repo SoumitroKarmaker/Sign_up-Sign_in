@@ -1,5 +1,7 @@
+import 'package:api/repository/auth_repo.dart';
 import 'package:api/screens/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class SignIn extends StatefulWidget {
@@ -55,7 +57,21 @@ class _SignInState extends State<SignIn> {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                try{
+                  EasyLoading.show(status: 'Signing in');
+                  bool status = await AuthRepo().signinwithemail(emailcontroller.text, passwordcontroller.text);
+                  if(status){
+                    EasyLoading.showSuccess('Sign in Successfull');
+                  }
+                  else{
+                    EasyLoading.showError('Email or password is wrong');
+                  }
+
+                }catch(e){
+                  EasyLoading.showError(e.toString());
+                }
+              },
               child: Padding(
                 padding: const EdgeInsets.all(6.0),
                 child: Row(

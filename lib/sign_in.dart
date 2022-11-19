@@ -1,4 +1,5 @@
 import 'package:api/repository/auth_repo.dart';
+import 'package:api/screens/home.dart';
 import 'package:api/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -63,6 +64,8 @@ class _SignInState extends State<SignIn> {
                   bool status = await AuthRepo().signinwithemail(emailcontroller.text, passwordcontroller.text);
                   if(status){
                     EasyLoading.showSuccess('Sign in Successfull');
+                    const Home().launch(context);
+
                   }
                   else{
                     EasyLoading.showError('Email or password is wrong');

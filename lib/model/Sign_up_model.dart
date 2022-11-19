@@ -1,6 +1,7 @@
 
-class SignIn {
-  SignIn({
+
+class SignUpModel {
+  SignUpModel({
       bool? success, 
       String? message, 
       Data? data,}){
@@ -9,7 +10,7 @@ class SignIn {
     _data = data;
 }
 
-  SignIn.fromJson(dynamic json) {
+  SignUpModel.fromJson(dynamic json) {
     _success = json['success'];
     _message = json['message'];
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
@@ -37,48 +38,30 @@ class Data {
   Data({
     int? userId,
     String? token,
-    String? name,
-    String? email,
-    String? phone,
-    dynamic refer,}){
+    String? tokenType,}){
     _userId = userId;
     _token = token;
-    _name = name;
-    _email = email;
-    _phone = phone;
-    _refer = refer;
+    _tokenType = tokenType;
   }
 
   Data.fromJson(dynamic json) {
     _userId = json['user_id'];
     _token = json['token'];
-    _name = json['name'];
-    _email = json['email'];
-    _phone = json['phone'];
-    _refer = json['refer'];
+    _tokenType = json['token_type'];
   }
   int? _userId;
   String? _token;
-  String? _name;
-  String? _email;
-  String? _phone;
-  dynamic _refer;
+  String? _tokenType;
 
   int? get userId => _userId;
   String? get token => _token;
-  String? get name => _name;
-  String? get email => _email;
-  String? get phone => _phone;
-  dynamic get refer => _refer;
+  String? get tokenType => _tokenType;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['user_id'] = _userId;
     map['token'] = _token;
-    map['name'] = _name;
-    map['email'] = _email;
-    map['phone'] = _phone;
-    map['refer'] = _refer;
+    map['token_type'] = _tokenType;
     return map;
   }
 
